@@ -15,7 +15,7 @@ public class CheckoutTests extends BaseTest{
         checkoutPage.openPage("https://www.saucedemo.com/checkout-step-one.html");
         checkoutPage.checkoutLogin("Ziyat", "Samatkhanov", "2323");
         checkoutPage.pressContinueButton();
-        Assert.assertEquals(checkoutPage.addCheckoutPrice("Sauce Labs Bolt T-Shirt"), "$15.99");
+        Assert.assertEquals(checkoutPage.getProductPrice(), "$15.99");
     }
 
     @Test
@@ -26,8 +26,8 @@ public class CheckoutTests extends BaseTest{
         productsPage.openPage("https://www.saucedemo.com/cart.html");
         checkoutPage.pressCheckoutButton();
         checkoutPage.openPage("https://www.saucedemo.com/checkout-step-one.html");
-        checkoutPage.checkoutLoginWithEmptyFields();
+        checkoutPage.clickContinueButton();
         checkoutPage.pressContinueButton();
-        Assert.assertEquals(checkoutPage.getErrorCheckout("Error"), "Error: First Name is required");
+        Assert.assertEquals(checkoutPage.getErrorText(), "Error: First Name is required");
     }
 }

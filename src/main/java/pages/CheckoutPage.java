@@ -15,7 +15,7 @@ public class CheckoutPage extends BasePage{
     private static final By ZIP_CODE_INPUT = By.xpath("//*[@id='postal-code']");
     private static final By CONTINUE_BUTTON = By.xpath("//*[@id='continue']");
     private static final String PRICE_CHECKOUT = "//*[@class='inventory_item_price']";
-    private static final String ERROR_CHECKOUT = "//*[contains(text(),'Error')]";
+    private static final String ERROR_CHECKOUT = "//*[@class='error-message-container error']";
 
     public void pressCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
@@ -31,15 +31,15 @@ public class CheckoutPage extends BasePage{
         driver.findElement(CONTINUE_BUTTON).click();
     }
 
-    public String addCheckoutPrice(String productName) {
-        return driver.findElement(By.xpath(String.format(PRICE_CHECKOUT, productName))).getText();
+    public String getProductPrice() {
+        return driver.findElement(By.xpath(PRICE_CHECKOUT)).getText();
     }
 
-    public void checkoutLoginWithEmptyFields() {
+    public void clickContinueButton() {
        driver.findElement(CONTINUE_BUTTON).click();
     }
 
-    public String getErrorCheckout(String errorMassage) {
-        return driver.findElement(By.xpath(String.format(ERROR_CHECKOUT, errorMassage))).getText();
+    public String getErrorText() {
+        return driver.findElement(By.xpath(ERROR_CHECKOUT)).getText();
     }
 }
