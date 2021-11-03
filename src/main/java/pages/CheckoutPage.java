@@ -31,8 +31,8 @@ public class CheckoutPage extends BasePage{
         driver.findElement(CONTINUE_BUTTON).click();
     }
 
-    public String getProductPrice() {
-        return driver.findElement(By.xpath(PRICE_CHECKOUT)).getText();
+    public String addCheckoutPrice(String productName) {
+        return driver.findElement(By.xpath(String.format(PRICE_CHECKOUT, productName))).getText();
     }
 
     public void clickContinueButton() {
