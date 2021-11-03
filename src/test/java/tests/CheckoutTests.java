@@ -15,7 +15,7 @@ public class CheckoutTests extends BaseTest{
         checkoutPage.openPage("https://www.saucedemo.com/checkout-step-one.html");
         checkoutPage.checkoutLogin("Ziyat", "Samatkhanov", "2323");
         checkoutPage.pressContinueButton();
-        Assert.assertEquals(checkoutPage.addCheckoutPrice("Sauce Labs Bolt T-Shirt"), "$15.99");
+        Assert.assertEquals(checkoutPage.getProductPrice("Sauce Labs Bolt T-Shirt"), "$15.99");
     }
 
     @Test
