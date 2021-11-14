@@ -16,27 +16,32 @@ public class CheckoutPage extends BasePage{
     private static final By CONTINUE_BUTTON = By.xpath("//*[@id='continue']");
     private static final String PRICE_CHECKOUT = "//*[@class='inventory_item_price']";
     private static final String ERROR_CHECKOUT = "//*[@class='error-message-container error']";
+    private static final String CHECKOUT_URL = "checkout-step-one.html";
 
-    public void pressCheckoutButton() {
+    public CheckoutPage pressCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
+        return new CheckoutPage(driver);
     }
 
-    public void checkoutLogin(String firstname, String lastname, String zipcode) {
+    public CheckoutPage openCheckoutPage() {
+        openPage(BASE_URL+CHECKOUT_URL);
+        return this;
+    }
+
+    public CheckoutPage fillAllValidFields(String firstname, String lastname, String zipcode) {
         driver.findElement(FIRST_NAME_INPUT).sendKeys(firstname);
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastname);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(zipcode);
+        return this;
     }
 
-    public void pressContinueButton() {
+    public CheckoutPage pressContinueButton() {
         driver.findElement(CONTINUE_BUTTON).click();
+        return new CheckoutPage(driver);
     }
 
     public String getProductPrice(String productName) {
         return driver.findElement(By.xpath(String.format(PRICE_CHECKOUT, productName))).getText();
-    }
-
-    public void clickContinueButton() {
-       driver.findElement(CONTINUE_BUTTON).click();
     }
 
     public String getErrorText() {
