@@ -13,4 +13,5 @@ CHECKLIST SauceDemo
 3.1 Заполнение всех полей и переход к оплате.
 3.2 Попытка входа без заполнения всех полей.
 
+
 4.Chains Of Invocations and Loadable Page
